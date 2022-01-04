@@ -23,7 +23,6 @@ export const FeedbackProvider = ({ children }) => {
     setFeedback([newFeedback, ...feedback]);
   };
 
-  // sets this piece of state to whatever item we want to update
   const editFeedback = (item) => {
     setFeedbackToEdit({
       item,
@@ -47,6 +46,7 @@ export const FeedbackProvider = ({ children }) => {
         deleteFeedback,
         addFeedback,
         editFeedback,
+        setFeedbackToEdit,
         updateFeedback,
       }}
     >

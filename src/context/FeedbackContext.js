@@ -36,6 +36,10 @@ export const FeedbackProvider = ({ children }) => {
         item.id === id ? { ...item, ...updatedItem } : item
       )
     );
+    setFeedbackToEdit({
+      item: {},
+      edit: false,
+    });
   };
 
   return (
@@ -46,7 +50,6 @@ export const FeedbackProvider = ({ children }) => {
         deleteFeedback,
         addFeedback,
         editFeedback,
-        setFeedbackToEdit,
         updateFeedback,
       }}
     >

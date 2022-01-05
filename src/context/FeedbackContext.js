@@ -1,16 +1,28 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
-import FeedbackData from '../data/FeedbackData';
 
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
-  const [feedback, setFeedback] = useState(FeedbackData);
+  const [feedback, setFeedback] = useState([]);
   const [feedbackToEdit, setFeedbackToEdit] = useState({
     item: {},
     edit: false,
   });
+
+  useEffect(() => {
+    fetchFeedback();
+  }, []);
+
+  const fetchFeedback = async () => {
+    const response = await fetch(
+      'http://localhost:5000/feedback?_sort=id&_order=desc'
+    );
+
+    const data = await response.json();
+
+    setFeedback(data);
+  };
 
   const deleteFeedback = (id) => {
     if (window.confirm('Are you sure?')) {

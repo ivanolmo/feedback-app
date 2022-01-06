@@ -47,7 +47,7 @@
     },
     {
       "id": 10,
-      "rating": "10",
+      "rating": 10,
       "text": "This is feedback item 10 coming from backend"
     }
   ]
